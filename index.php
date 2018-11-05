@@ -1,9 +1,16 @@
 <?php
-    require './vendor/autoload.php';
-    echo "calculateHomeWorkSum: " . calculateHomeWorkSum(3, 2.2, '1') . "<br />\n";
-    echo "Nfq\Akademija\Not_Typed\calculateHomeWorkSum: " . Nfq\Akademija\Not_Typed\calculateHomeWorkSum(3, 2.2, '1') . "<br />\n";
-    echo "Nfq\Akademija\Soft\calculateHomeWorkSum: " . Nfq\Akademija\Soft\calculateHomeWorkSum(3, 2.2, '1') . "<br />\n";
-    echo "Nfq\Akademija\Strict\calculateHomeWorkSum: " . Nfq\Akademija\Strict\calculateHomeWorkSum(3, 2.2, '1') . "<br />\n";
+
+use Nfq\Reservation as Reservation;
+use Nfq\Guest as Guest;
+use Nfq\SingleRoom as SingleRoom;
+use Nfq\BookingManager as BookingManager;
+
+require './vendor/autoload.php';
+
+$room = new SingleRoom(1408, 99);
+$guest = new Guest('Vardenis', 'Pavardenis');
+$startDate = new DateTime("2018-11-01");
+$endDate = new DateTime("2018-11-05");
+$reservation = new Reservation($startDate, $endDate, $guest);
+BookingManager::bookRoom($room, $reservation);
 ?>
-
-
